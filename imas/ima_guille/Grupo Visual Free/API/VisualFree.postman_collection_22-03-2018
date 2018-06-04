@@ -1,0 +1,2371 @@
+{
+	"info": {
+		"_postman_id": "e09575cf-22dc-492e-a711-75033f4c3ea8",
+		"name": "VisualFree",
+		"description": "API Documentation of VisualFree - Hotel bookings with discount codes. \n(Some methods included: login, checkToken, listBonosComprados, ...)\n\n# Develop\n* Company: Solbyte\n* Contact: lorenavicente@solbyte.com\n* Created at: 2015\n\n<br/>\n# Authentication\n<p>Most of the methods require a \"token\" parameter, other are public.</p>\n<p>You could obtain it using the \"login\" method.</p>\n\n<br/>\n# Parameters\nThe API <B>ALWAYS</B> requires a POST parameter: data (object JSON). It contains: ALWAYS \"method\" (string) and SOMETIMES \"params\" (object)\n\n<br/>\n# Error Codes\nError codes are sent in JSON code. <br/><br/>\nThe API <B>ALWAYS</B> return a \"result\" parameter with \"ok\" or \"ko\" text. <br/>\n* If the result is \"ko\", the API includes a message (\"msg\" parameter).<br/>\n* If the result is \"ok\", it is possible to receive a \"data\" parameter different from the method called.<br/>\n\n<br/>\n# HTTP CODES\nNot available\n<br/><br/>\n \n# Variables\n{{URL}} - http://intranet.visualfree.es/webService.php\n<BR/>\n{{URL_DEV}} - http://desarrollo.visualfree.es/webService.php",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "data",
+							"value": "{\"method\":\"login\",\"params\":{\"user\":\"proveedordemo@solbyte.com\",\"pass\":\"proveedordemo\"}}",
+							"type": "text",
+							"description": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL_DEV}}",
+					"host": [
+						"{{URL_DEV}}"
+					]
+				},
+				"description": "Autentica un usuario proveedor. Guarda su sesión en el servidor para utilizar las demás funciones.\r\n<br/>Si es usuario proveedor (tipo 2) puede consumir bonos ya sea por QR o introduciendo los dígitos.\r\n<br/>Si es usuario proveedor administrador (tipo 3) puede ver listado de los últimos bonos comprados y listado de los últimos bonos consumidos\r\n<br/><br/>\r\n\r\nEjemplos de petición:<br/>\r\n- {\"method\":\"login\",\"params\":{\"user\":\"proveedordemo@solbyte.com\",\"pass\":\"proveedordemo\"}} (Este es administrador)\r\n- {\"method\":\"login\",\"params\":{\"user\":\"validadordemo@solbyte.com\",\"pass\":\"proveedorvalidador\"}}"
+			},
+			"response": [
+				{
+					"id": "dc536945-eba7-4132-b474-4dfa2ed41044",
+					"name": "login - KO (Incorrect User)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"method\":\"login\",\"params\":{\"user\":\"proveedordemo@solbyte.com\",\"pass\":\"AAA\"}}",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_DEV}}",
+							"host": [
+								"{{URL_DEV}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+							"name": "Cache-Control",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip",
+							"name": "Content-Encoding",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"key": "Content-Length",
+							"value": "100",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Mar 2018 14:11:57 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT",
+							"name": "Expires",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100",
+							"name": "Keep-Alive",
+							"description": "Custom header"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache",
+							"name": "Pragma",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"key": "Server",
+							"value": "Apache",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding",
+							"name": "Vary",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PleskLin",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (Hora estándar romance)",
+							"httpOnly": false,
+							"domain": "intranet.visualfree.es",
+							"path": "/",
+							"secure": false,
+							"value": "r99mej47lm05mu6j91mcijgin7",
+							"key": "ddrs2l3teVisual14Free2ntIntranet"
+						}
+					],
+					"body": "{\"result\":\"ko\",\"msg\":\"Error: El usuario y contrase\\u00f1a introducidos no son v\\u00e1lidos.\"}"
+				},
+				{
+					"id": "e2282eb7-206d-44fd-8d18-7289c629e7b4",
+					"name": "login - OK (User Proveedor)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"method\":\"login\",\"params\":{\"user\":\"validadordemo@solbyte.com\",\"pass\":\"validadordemo\"}}",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_DEV}}",
+							"host": [
+								"{{URL_DEV}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+							"name": "Cache-Control",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip",
+							"name": "Content-Encoding",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"key": "Content-Length",
+							"value": "113",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Mar 2018 14:26:07 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT",
+							"name": "Expires",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100",
+							"name": "Keep-Alive",
+							"description": "Custom header"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache",
+							"name": "Pragma",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"key": "Server",
+							"value": "Apache",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding",
+							"name": "Vary",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PleskLin",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (Hora estándar romance)",
+							"httpOnly": false,
+							"domain": "intranet.visualfree.es",
+							"path": "/",
+							"secure": false,
+							"value": "r99mej47lm05mu6j91mcijgin7",
+							"key": "ddrs2l3teVisual14Free2ntIntranet"
+						}
+					],
+					"body": "{\"result\":\"ok\",\"name\":\"PROVEEDOR DEMO SOLBYTE\",\"type\":\"2\",\"token\":\"6d407b8e9298829cd6c7ac1757384cdb\"}"
+				},
+				{
+					"id": "719544e8-35fd-4415-ac14-4f0a06412b3f",
+					"name": "login - OK (User Proveedor Administrador)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"method\":\"login\",\"params\":{\"user\":\"proveedordemo@solbyte.com\",\"pass\":\"proveedordemo\"}}",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_DEV}}",
+							"host": [
+								"{{URL_DEV}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+							"name": "Cache-Control",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip",
+							"name": "Content-Encoding",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"key": "Content-Length",
+							"value": "113",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Mar 2018 14:06:32 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT",
+							"name": "Expires",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100",
+							"name": "Keep-Alive",
+							"description": "Custom header"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache",
+							"name": "Pragma",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"key": "Server",
+							"value": "Apache",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "ddrs2l3teVisual14Free2ntIntranet=r99mej47lm05mu6j91mcijgin7; path=/",
+							"name": "Set-Cookie",
+							"description": "an HTTP cookie"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding",
+							"name": "Vary",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PleskLin",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (Hora estándar romance)",
+							"httpOnly": false,
+							"domain": "intranet.visualfree.es",
+							"path": "/",
+							"secure": false,
+							"value": "r99mej47lm05mu6j91mcijgin7",
+							"key": "ddrs2l3teVisual14Free2ntIntranet"
+						}
+					],
+					"body": "{\"result\":\"ok\",\"name\":\"PROVEEDOR DEMO SOLBYTE\",\"type\":\"3\",\"token\":\"4497ac8f0a05c2b807da36070abc7e30\"}"
+				},
+				{
+					"id": "ef96c721-8bb7-449c-a34b-753bcd76b046",
+					"name": "login - KO (Incorrect method)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"method\":\"loginXXX\",\"params\":{\"user\":\"proveedordemo@solbyte.com\",\"pass\":\"AAA\"}}",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_DEV}}",
+							"host": [
+								"{{URL_DEV}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+							"name": "Cache-Control",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip",
+							"name": "Content-Encoding",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"key": "Content-Length",
+							"value": "96",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Mar 2018 14:15:33 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT",
+							"name": "Expires",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100",
+							"name": "Keep-Alive",
+							"description": "Custom header"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache",
+							"name": "Pragma",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"key": "Server",
+							"value": "Apache",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding",
+							"name": "Vary",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PleskLin",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (Hora estándar romance)",
+							"httpOnly": false,
+							"domain": "intranet.visualfree.es",
+							"path": "/",
+							"secure": false,
+							"value": "r99mej47lm05mu6j91mcijgin7",
+							"key": "ddrs2l3teVisual14Free2ntIntranet"
+						}
+					],
+					"body": "{\"result\":\"ko\",\"msg\":\"Error: El m\\u00e9todo del servicio no est\\u00e1 disponible.\"}"
+				},
+				{
+					"id": "73bca0bd-3a39-4c39-97df-b8e6f0a272fd",
+					"name": "login - KO (Incorrect params)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"method\":\"login\",\"params\":{\"user\":\"proveedordemo@solbyte.com\"}}",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_DEV}}",
+							"host": [
+								"{{URL_DEV}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+							"name": "Cache-Control",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip",
+							"name": "Content-Encoding",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"key": "Content-Length",
+							"value": "102",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Mar 2018 14:16:09 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT",
+							"name": "Expires",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100",
+							"name": "Keep-Alive",
+							"description": "Custom header"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache",
+							"name": "Pragma",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"key": "Server",
+							"value": "Apache",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding",
+							"name": "Vary",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PleskLin",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (Hora estándar romance)",
+							"httpOnly": false,
+							"domain": "intranet.visualfree.es",
+							"path": "/",
+							"secure": false,
+							"value": "r99mej47lm05mu6j91mcijgin7",
+							"key": "ddrs2l3teVisual14Free2ntIntranet"
+						}
+					],
+					"body": "{\"result\":\"ko\",\"msg\":\"Error: Faltan el par\\u00e1metro POST (params) o es incorrecto.\"}"
+				}
+			]
+		},
+		{
+			"name": "checkToken",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "data",
+							"value": "{\"method\":\"checkToken\",\"params\":{\"token\":\"627fbee426276b4b9d97529c46e4a548\"}}",
+							"type": "text",
+							"description": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL_DEV}}",
+					"host": [
+						"{{URL_DEV}}"
+					]
+				},
+				"description": "Autentica un usuario a través de un Token (obtenido en una llamada al método Login).  Guarda su sesión en el servidor para utilizar las demás funciones. \r\n<br/>Si es usuario proveedor (tipo 2) puede consumir bonos ya sea por QR o introduciendo los dígitos.\r\n<br/>Si es usuario proveedor administrador (tipo 3) puede ver listado de los últimos bonos comprados y listado de los últimos bonos consumidos"
+			},
+			"response": [
+				{
+					"id": "b0c04ec3-0bba-4002-b6f7-e9690d9082f3",
+					"name": "checkToken - OK (User proveedor validador)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"method\":\"checkToken\",\"params\":{\"token\":\"6d407b8e9298829cd6c7ac1757384cdb\"}}",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_DEV}}",
+							"host": [
+								"{{URL_DEV}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+							"name": "Cache-Control",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip",
+							"name": "Content-Encoding",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"key": "Content-Length",
+							"value": "113",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Mar 2018 14:37:12 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT",
+							"name": "Expires",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100",
+							"name": "Keep-Alive",
+							"description": "Custom header"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache",
+							"name": "Pragma",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"key": "Server",
+							"value": "Apache",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding",
+							"name": "Vary",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PleskLin",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (Hora estándar romance)",
+							"httpOnly": false,
+							"domain": "intranet.visualfree.es",
+							"path": "/",
+							"secure": false,
+							"value": "r99mej47lm05mu6j91mcijgin7",
+							"key": "ddrs2l3teVisual14Free2ntIntranet"
+						}
+					],
+					"body": "{\"result\":\"ok\",\"name\":\"PROVEEDOR DEMO SOLBYTE\",\"type\":\"2\",\"token\":\"6d407b8e9298829cd6c7ac1757384cdb\"}"
+				},
+				{
+					"id": "e10fa758-081f-4327-b375-49ba40375702",
+					"name": "checkToken - KO (error token)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"method\":\"checkToken\",\"params\":{\"token\":\"XXXX\"}}",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_DEV}}",
+							"host": [
+								"{{URL_DEV}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+							"name": "Cache-Control",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip",
+							"name": "Content-Encoding",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"key": "Content-Length",
+							"value": "69",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Mar 2018 14:36:35 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT",
+							"name": "Expires",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100",
+							"name": "Keep-Alive",
+							"description": "Custom header"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache",
+							"name": "Pragma",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"key": "Server",
+							"value": "Apache",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding",
+							"name": "Vary",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PleskLin",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (Hora estándar romance)",
+							"httpOnly": false,
+							"domain": "intranet.visualfree.es",
+							"path": "/",
+							"secure": false,
+							"value": "r99mej47lm05mu6j91mcijgin7",
+							"key": "ddrs2l3teVisual14Free2ntIntranet"
+						}
+					],
+					"body": "{\"result\":\"ko\",\"msg\":\"Error: Token inv\\u00e1lido.\"}"
+				}
+			]
+		},
+		{
+			"name": "listBonosComprados",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "data",
+							"value": "{\"method\":\"listBonosComprados\"}",
+							"type": "text",
+							"description": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL_DEV}}",
+					"host": [
+						"{{URL_DEV}}"
+					]
+				},
+				"description": "Muestra los datos de los bonos comprados PENDIENTES DE VALIDAR.\n<br/><br/>No recibe params."
+			},
+			"response": [
+				{
+					"id": "d661d427-1859-4387-830b-cdabf87d8074",
+					"name": "listBonosComprados - KO  (No es posible mostrar bonos)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"method\":\"listBonosComprados\"}",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_DEV}}",
+							"host": [
+								"{{URL_DEV}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+							"name": "Cache-Control",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip",
+							"name": "Content-Encoding",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"key": "Content-Length",
+							"value": "127",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Mar 2018 14:46:43 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT",
+							"name": "Expires",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100",
+							"name": "Keep-Alive",
+							"description": "Custom header"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache",
+							"name": "Pragma",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"key": "Server",
+							"value": "Apache",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding",
+							"name": "Vary",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PleskLin",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (Hora estándar romance)",
+							"httpOnly": false,
+							"domain": "intranet.visualfree.es",
+							"path": "/",
+							"secure": false,
+							"value": "r99mej47lm05mu6j91mcijgin7",
+							"key": "ddrs2l3teVisual14Free2ntIntranet"
+						}
+					],
+					"body": "{\"result\":\"ko\",\"msg\":\"Error: No es posible mostrar el listado de Bonos Comprados. Servicio solo para Proveedores Administradores.\"}"
+				},
+				{
+					"id": "a43c5804-3292-4471-85dd-3da1c65cb04e",
+					"name": "listBonosComprados - OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"method\":\"listBonosComprados\"}",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_DEV}}",
+							"host": [
+								"{{URL_DEV}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+							"name": "Cache-Control",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip",
+							"name": "Content-Encoding",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"key": "Content-Length",
+							"value": "153",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Mar 2018 15:03:32 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT",
+							"name": "Expires",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100",
+							"name": "Keep-Alive",
+							"description": "Custom header"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache",
+							"name": "Pragma",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"key": "Server",
+							"value": "Apache",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding",
+							"name": "Vary",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PleskLin",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (Hora estándar romance)",
+							"httpOnly": false,
+							"domain": "intranet.visualfree.es",
+							"path": "/",
+							"secure": false,
+							"value": "r99mej47lm05mu6j91mcijgin7",
+							"key": "ddrs2l3teVisual14Free2ntIntranet"
+						}
+					],
+					"body": "{\"result\":\"ok\",\"bonos\":[{\"cliente\":\"S PEREZ\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"16181737****\",\"fecha_compra\":\"19\\/03\\/2018\",\"fecha_caducidad\":\"19\\/04\\/2018\"}]}"
+				},
+				{
+					"id": "5664d251-3269-4e72-a511-a1f6d6111c4e",
+					"name": "listBonosComprados - OK (No hay bonos comprados)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"method\":\"listBonosComprados\"}",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_DEV}}",
+							"host": [
+								"{{URL_DEV}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+							"name": "Cache-Control",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip",
+							"name": "Content-Encoding",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"key": "Content-Length",
+							"value": "46",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Mar 2018 14:50:21 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT",
+							"name": "Expires",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100",
+							"name": "Keep-Alive",
+							"description": "Custom header"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache",
+							"name": "Pragma",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"key": "Server",
+							"value": "Apache",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding",
+							"name": "Vary",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PleskLin",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (Hora estándar romance)",
+							"httpOnly": false,
+							"domain": "intranet.visualfree.es",
+							"path": "/",
+							"secure": false,
+							"value": "r99mej47lm05mu6j91mcijgin7",
+							"key": "ddrs2l3teVisual14Free2ntIntranet"
+						}
+					],
+					"body": "{\"result\":\"ok\",\"bonos\":[]}"
+				}
+			]
+		},
+		{
+			"name": "listBonosConsumidos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "data",
+							"value": "{\"method\":\"listBonosConsumidos\"}",
+							"type": "text",
+							"description": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL_DEV}}",
+					"host": [
+						"{{URL_DEV}}"
+					]
+				},
+				"description": "Muestra los datos de los bonos YA CONSUMIDOS.\n<br/><br/>No recibe params."
+			},
+			"response": [
+				{
+					"id": "9536b26c-5db9-4e79-8302-53dc3cda0d3a",
+					"name": "listBonosConsumidos - KO (No es posible mostrar bonos)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"method\":\"listBonosConsumidos\"}",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_DEV}}",
+							"host": [
+								"{{URL_DEV}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+							"name": "Cache-Control",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip",
+							"name": "Content-Encoding",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"key": "Content-Length",
+							"value": "127",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Mar 2018 14:49:27 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT",
+							"name": "Expires",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100",
+							"name": "Keep-Alive",
+							"description": "Custom header"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache",
+							"name": "Pragma",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"key": "Server",
+							"value": "Apache",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding",
+							"name": "Vary",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PleskLin",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (Hora estándar romance)",
+							"httpOnly": false,
+							"domain": "intranet.visualfree.es",
+							"path": "/",
+							"secure": false,
+							"value": "r99mej47lm05mu6j91mcijgin7",
+							"key": "ddrs2l3teVisual14Free2ntIntranet"
+						}
+					],
+					"body": "{\"result\":\"ko\",\"msg\":\"Error: No es posible mostrar el listado de Bonos Consumidos. Servicio solo para Proveedores Administradores.\"}"
+				},
+				{
+					"id": "ec1fcef3-ac03-4ad4-bd97-a4279a960920",
+					"name": "listBonosConsumidos - OK (No hay bonos consumidos)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"method\":\"listBonosConsumidos\"}",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_DEV}}",
+							"host": [
+								"{{URL_DEV}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+							"name": "Cache-Control",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip",
+							"name": "Content-Encoding",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"key": "Content-Length",
+							"value": "46",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Mar 2018 14:51:00 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT",
+							"name": "Expires",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100",
+							"name": "Keep-Alive",
+							"description": "Custom header"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache",
+							"name": "Pragma",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"key": "Server",
+							"value": "Apache",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding",
+							"name": "Vary",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PleskLin",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (Hora estándar romance)",
+							"httpOnly": false,
+							"domain": "intranet.visualfree.es",
+							"path": "/",
+							"secure": false,
+							"value": "r99mej47lm05mu6j91mcijgin7",
+							"key": "ddrs2l3teVisual14Free2ntIntranet"
+						}
+					],
+					"body": "{\"result\":\"ok\",\"bonos\":[]}"
+				},
+				{
+					"id": "56bee36d-c87b-4141-9d9d-f724ef5646b4",
+					"name": "listBonosConsumidos - OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"method\":\"listBonosConsumidos\"}",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_DEV}}",
+							"host": [
+								"{{URL_DEV}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+							"name": "Cache-Control",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip",
+							"name": "Content-Encoding",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"key": "Content-Length",
+							"value": "1900",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Mar 2018 15:04:02 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT",
+							"name": "Expires",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100",
+							"name": "Keep-Alive",
+							"description": "Custom header"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache",
+							"name": "Pragma",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"key": "Server",
+							"value": "Apache",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding",
+							"name": "Vary",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PleskLin",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (Hora estándar romance)",
+							"httpOnly": false,
+							"domain": "intranet.visualfree.es",
+							"path": "/",
+							"secure": false,
+							"value": "r99mej47lm05mu6j91mcijgin7",
+							"key": "ddrs2l3teVisual14Free2ntIntranet"
+						}
+					],
+					"body": "{\"result\":\"ok\",\"bonos\":[{\"cliente\":\"CARNICERIA CHARCUTERIA EL CONSUL\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"665182873058\",\"fecha_compra\":\"21\\/03\\/2018\",\"fecha_consumo\":\"21\\/03\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"CARNICERIA CHARCUTERIA EL CONSUL\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"048934306348\",\"fecha_compra\":\"21\\/03\\/2018\",\"fecha_consumo\":\"21\\/03\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"CARNICERIA CHARCUTERIA EL CONSUL\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"049306119527\",\"fecha_compra\":\"21\\/03\\/2018\",\"fecha_consumo\":\"21\\/03\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"CODIGO MALAGA\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"246342943956\",\"fecha_compra\":\"08\\/03\\/2018\",\"fecha_consumo\":\"13\\/03\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"CODIGO MALAGA\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"998156985086\",\"fecha_compra\":\"08\\/03\\/2018\",\"fecha_consumo\":\"13\\/03\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"CODIGO MALAGA\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"580567842228\",\"fecha_compra\":\"08\\/03\\/2018\",\"fecha_consumo\":\"13\\/03\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"MI CAPRICHO HOME\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"253037048111\",\"fecha_compra\":\"12\\/03\\/2018\",\"fecha_consumo\":\"12\\/03\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"MUNDOPAPEL DISTRIBUCIONES\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"475711317421\",\"fecha_compra\":\"12\\/03\\/2018\",\"fecha_consumo\":\"12\\/03\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"MI CAPRICHO HOME\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"792969251295\",\"fecha_compra\":\"12\\/03\\/2018\",\"fecha_consumo\":\"12\\/03\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"MUNDOPAPEL DISTRIBUCIONES\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"882111865580\",\"fecha_compra\":\"12\\/03\\/2018\",\"fecha_consumo\":\"12\\/03\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"MI CAPRICHO HOME\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"528814395139\",\"fecha_compra\":\"12\\/03\\/2018\",\"fecha_consumo\":\"12\\/03\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"MUNDOPAPEL DISTRIBUCIONES\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"690148710859\",\"fecha_compra\":\"12\\/03\\/2018\",\"fecha_consumo\":\"12\\/03\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ALUMINIOS M Y M \",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"188335653127\",\"fecha_compra\":\"02\\/03\\/2018\",\"fecha_consumo\":\"02\\/03\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ALUMINIOS M Y M \",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"689946388877\",\"fecha_compra\":\"02\\/03\\/2018\",\"fecha_consumo\":\"02\\/03\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ALUMINIOS M Y M \",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"555469994671\",\"fecha_compra\":\"02\\/03\\/2018\",\"fecha_consumo\":\"02\\/03\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ALUMINIOS M Y M \",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"515733765024\",\"fecha_compra\":\"26\\/02\\/2018\",\"fecha_consumo\":\"26\\/02\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"EQUIPO LUXURY\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"395672831659\",\"fecha_compra\":\"26\\/02\\/2018\",\"fecha_consumo\":\"26\\/02\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ALUMINIOS M Y M \",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"215710382981\",\"fecha_compra\":\"26\\/02\\/2018\",\"fecha_consumo\":\"26\\/02\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ALUMINIOS M Y M \",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"043256327844\",\"fecha_compra\":\"26\\/02\\/2018\",\"fecha_consumo\":\"26\\/02\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"EMILIANO\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"286982614035\",\"fecha_compra\":\"22\\/02\\/2018\",\"fecha_consumo\":\"23\\/02\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"EMILIANO\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"918833232308\",\"fecha_compra\":\"22\\/02\\/2018\",\"fecha_consumo\":\"23\\/02\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"EMILIANO\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"593836094438\",\"fecha_compra\":\"22\\/02\\/2018\",\"fecha_consumo\":\"23\\/02\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"CASA ANTONIO \",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"166485126121\",\"fecha_compra\":\"06\\/02\\/2018\",\"fecha_consumo\":\"23\\/02\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"CASA ANTONIO \",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"993177703336\",\"fecha_compra\":\"06\\/02\\/2018\",\"fecha_consumo\":\"21\\/02\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"CASA ANTONIO \",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"301889914287\",\"fecha_compra\":\"06\\/02\\/2018\",\"fecha_consumo\":\"21\\/02\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\" MARISQUERIA ER JUANI\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"081942925448\",\"fecha_compra\":\"15\\/02\\/2018\",\"fecha_consumo\":\"15\\/02\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\" MARISQUERIA ER JUANI\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"805994199075\",\"fecha_compra\":\"15\\/02\\/2018\",\"fecha_consumo\":\"15\\/02\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\" MARISQUERIA ER JUANI\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"053293633147\",\"fecha_compra\":\"15\\/02\\/2018\",\"fecha_consumo\":\"15\\/02\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"TIMIDIOMAS EL EJIDO\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"471722792037\",\"fecha_compra\":\"12\\/02\\/2018\",\"fecha_consumo\":\"12\\/02\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"TIMIDIOMAS EL EJIDO\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"156560699947\",\"fecha_compra\":\"12\\/02\\/2018\",\"fecha_consumo\":\"12\\/02\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"TIMIDIOMAS EL EJIDO\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"092361115721\",\"fecha_compra\":\"12\\/02\\/2018\",\"fecha_consumo\":\"12\\/02\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ACADEMIA GAUSS\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"641134879813\",\"fecha_compra\":\"25\\/01\\/2018\",\"fecha_consumo\":\"31\\/01\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"PINTURAS JUBULOSA\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"546599367038\",\"fecha_compra\":\"31\\/01\\/2018\",\"fecha_consumo\":\"31\\/01\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ACADEMIA GAUSS\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"047818738871\",\"fecha_compra\":\"25\\/01\\/2018\",\"fecha_consumo\":\"31\\/01\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"PINTURAS JUBULOSA\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"512007040836\",\"fecha_compra\":\"31\\/01\\/2018\",\"fecha_consumo\":\"31\\/01\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ACADEMIA GAUSS\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"846056052079\",\"fecha_compra\":\"25\\/01\\/2018\",\"fecha_consumo\":\"31\\/01\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"PONY CORREDURIA DE SEGUROS\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"598861776836\",\"fecha_compra\":\"30\\/01\\/2018\",\"fecha_consumo\":\"30\\/01\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"S PEREZ\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"070285274294\",\"fecha_compra\":\"18\\/01\\/2018\",\"fecha_consumo\":\"23\\/01\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"S PEREZ\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"914667740774\",\"fecha_compra\":\"18\\/01\\/2018\",\"fecha_consumo\":\"23\\/01\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"OCL\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"737364488959\",\"fecha_compra\":\"08\\/01\\/2018\",\"fecha_consumo\":\"18\\/01\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"OCL\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"371470490174\",\"fecha_compra\":\"27\\/12\\/2017\",\"fecha_consumo\":\"18\\/01\\/2018\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ANTFER ARMARIOS\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"430445092949\",\"fecha_compra\":\"27\\/12\\/2017\",\"fecha_consumo\":\"30\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ANTFER ARMARIOS\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"885484783353\",\"fecha_compra\":\"27\\/12\\/2017\",\"fecha_consumo\":\"30\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ANTFER ARMARIOS\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"911537631563\",\"fecha_compra\":\"27\\/12\\/2017\",\"fecha_consumo\":\"30\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"S PEREZ\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"897669833409\",\"fecha_compra\":\"29\\/12\\/2017\",\"fecha_consumo\":\"29\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"S PEREZ\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"692748905483\",\"fecha_compra\":\"29\\/12\\/2017\",\"fecha_consumo\":\"29\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"S PEREZ\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"491083822702\",\"fecha_compra\":\"29\\/12\\/2017\",\"fecha_consumo\":\"29\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"OBI OBA \",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"062893430914\",\"fecha_compra\":\"23\\/12\\/2017\",\"fecha_consumo\":\"23\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"OBI OBA \",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"145988359733\",\"fecha_compra\":\"23\\/12\\/2017\",\"fecha_consumo\":\"23\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"OBI OBA \",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"850390595005\",\"fecha_compra\":\"22\\/12\\/2017\",\"fecha_consumo\":\"22\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"OBI OBA \",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"925606391247\",\"fecha_compra\":\"22\\/12\\/2017\",\"fecha_consumo\":\"22\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"OBI OBA \",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"411376908340\",\"fecha_compra\":\"22\\/12\\/2017\",\"fecha_consumo\":\"22\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"PELUCAS PACO\\u00b4S\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"019287944398\",\"fecha_compra\":\"23\\/11\\/2017\",\"fecha_consumo\":\"19\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"PELUCAS PACO\\u00b4S\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"638777094545\",\"fecha_compra\":\"23\\/11\\/2017\",\"fecha_consumo\":\"19\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"PELUCAS PACO\\u00b4S\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"131502857416\",\"fecha_compra\":\"23\\/11\\/2017\",\"fecha_consumo\":\"19\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"SUMINISTROS SANRO\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"454801746855\",\"fecha_compra\":\"14\\/12\\/2017\",\"fecha_consumo\":\"14\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"MATACOPAS\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"969582148891\",\"fecha_compra\":\"12\\/12\\/2017\",\"fecha_consumo\":\"13\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"MATACOPAS\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"075139763355\",\"fecha_compra\":\"12\\/12\\/2017\",\"fecha_consumo\":\"13\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"MATACOPAS\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"036086572276\",\"fecha_compra\":\"12\\/12\\/2017\",\"fecha_consumo\":\"13\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"RESTAURANTE LOS CURROS\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"272026996832\",\"fecha_compra\":\"12\\/12\\/2017\",\"fecha_consumo\":\"12\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"BALTA MOBILIARIO DE OFICINA\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"849135061872\",\"fecha_compra\":\"05\\/12\\/2017\",\"fecha_consumo\":\"05\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"CARNICERIA CHARCUTERIA EL CONSUL\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"605840102213\",\"fecha_compra\":\"05\\/12\\/2017\",\"fecha_consumo\":\"05\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"CARNICERIA CHARCUTERIA EL CONSUL\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"850022845461\",\"fecha_compra\":\"05\\/12\\/2017\",\"fecha_consumo\":\"05\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"BALTA MOBILIARIO DE OFICINA\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"118774731601\",\"fecha_compra\":\"05\\/12\\/2017\",\"fecha_consumo\":\"05\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"BALTA MOBILIARIO DE OFICINA\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"178969208447\",\"fecha_compra\":\"05\\/12\\/2017\",\"fecha_consumo\":\"05\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"CARNICERIA CHARCUTERIA EL CONSUL\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"680639485405\",\"fecha_compra\":\"05\\/12\\/2017\",\"fecha_consumo\":\"05\\/12\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ANTFER ARMARIOS\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"346330238644\",\"fecha_compra\":\"30\\/11\\/2017\",\"fecha_consumo\":\"30\\/11\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ANTFER ARMARIOS\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"740468549410\",\"fecha_compra\":\"30\\/11\\/2017\",\"fecha_consumo\":\"30\\/11\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ANTFER ARMARIOS\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"597586455095\",\"fecha_compra\":\"30\\/11\\/2017\",\"fecha_consumo\":\"30\\/11\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\" MARISQUERIA ER JUANI\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"766234394034\",\"fecha_compra\":\"27\\/11\\/2017\",\"fecha_consumo\":\"27\\/11\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"VISUAL FREE\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"678614201778\",\"fecha_compra\":\"27\\/11\\/2017\",\"fecha_consumo\":\"27\\/11\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\" MARISQUERIA ER JUANI\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"994098684261\",\"fecha_compra\":\"27\\/11\\/2017\",\"fecha_consumo\":\"27\\/11\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"VISUAL FREE\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"990618468835\",\"fecha_compra\":\"27\\/11\\/2017\",\"fecha_consumo\":\"27\\/11\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\" MARISQUERIA ER JUANI\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"970350735977\",\"fecha_compra\":\"27\\/11\\/2017\",\"fecha_consumo\":\"27\\/11\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"VISUAL FREE\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"467443251977\",\"fecha_compra\":\"27\\/11\\/2017\",\"fecha_consumo\":\"27\\/11\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ACADEMIA GAUSS\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"435640237420\",\"fecha_compra\":\"10\\/11\\/2017\",\"fecha_consumo\":\"21\\/11\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ACADEMIA GAUSS\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"672380827239\",\"fecha_compra\":\"10\\/11\\/2017\",\"fecha_consumo\":\"21\\/11\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ACADEMIA GAUSS\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"729336460429\",\"fecha_compra\":\"10\\/11\\/2017\",\"fecha_consumo\":\"21\\/11\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"CODIGO MALAGA\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"262444293912\",\"fecha_compra\":\"17\\/11\\/2017\",\"fecha_consumo\":\"17\\/11\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"CODIGO MALAGA\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"424119831352\",\"fecha_compra\":\"17\\/11\\/2017\",\"fecha_consumo\":\"17\\/11\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"CODIGO MALAGA\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"470844463056\",\"fecha_compra\":\"17\\/11\\/2017\",\"fecha_consumo\":\"17\\/11\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"EMILIANO\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"070167190654\",\"fecha_compra\":\"16\\/11\\/2017\",\"fecha_consumo\":\"16\\/11\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"EMILIANO\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"507192342725\",\"fecha_compra\":\"16\\/11\\/2017\",\"fecha_consumo\":\"16\\/11\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"MI CAPRICHO HOME\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"988278617001\",\"fecha_compra\":\"09\\/11\\/2017\",\"fecha_consumo\":\"09\\/11\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"MI CAPRICHO HOME\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"700123802827\",\"fecha_compra\":\"09\\/11\\/2017\",\"fecha_consumo\":\"09\\/11\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"MI CAPRICHO HOME\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"020271362530\",\"fecha_compra\":\"09\\/11\\/2017\",\"fecha_consumo\":\"09\\/11\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ANTFER ARMARIOS\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"372771407259\",\"fecha_compra\":\"30\\/10\\/2017\",\"fecha_consumo\":\"30\\/10\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ANTFER ARMARIOS\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"471637637328\",\"fecha_compra\":\"30\\/10\\/2017\",\"fecha_consumo\":\"30\\/10\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ANTFER ARMARIOS\",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"466937532258\",\"fecha_compra\":\"30\\/10\\/2017\",\"fecha_consumo\":\"30\\/10\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"OBI OBA \",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"078446216551\",\"fecha_compra\":\"26\\/10\\/2017\",\"fecha_consumo\":\"27\\/10\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"OBI OBA \",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"148415183290\",\"fecha_compra\":\"26\\/10\\/2017\",\"fecha_consumo\":\"27\\/10\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"OBI OBA \",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"963281255807\",\"fecha_compra\":\"26\\/10\\/2017\",\"fecha_consumo\":\"27\\/10\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ACADEMIA GAUSS\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"781911641585\",\"fecha_compra\":\"20\\/10\\/2017\",\"fecha_consumo\":\"24\\/10\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ACADEMIA GAUSS\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"609304409257\",\"fecha_compra\":\"20\\/10\\/2017\",\"fecha_consumo\":\"24\\/10\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"ACADEMIA GAUSS\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"383436730232\",\"fecha_compra\":\"20\\/10\\/2017\",\"fecha_consumo\":\"24\\/10\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"OBI OBA \",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"216532645074\",\"fecha_compra\":\"21\\/10\\/2017\",\"fecha_consumo\":\"21\\/10\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"OBI OBA \",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"627378598015\",\"fecha_compra\":\"21\\/10\\/2017\",\"fecha_consumo\":\"21\\/10\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"OBI OBA \",\"bono\":\"COPYRAP 25 (C\\/ Rafaela)\",\"codigo\":\"335085081505\",\"fecha_compra\":\"21\\/10\\/2017\",\"fecha_consumo\":\"21\\/10\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"TALLERES SOLUCAR\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"122475009715\",\"fecha_compra\":\"13\\/10\\/2017\",\"fecha_consumo\":\"13\\/10\\/2017\",\"validador\":\"juande@copyrap.com\"},{\"cliente\":\"TALLERES SOLUCAR\",\"bono\":\"COPYRAP 25 (El Viso)\",\"codigo\":\"801115247160\",\"fecha_compra\":\"13\\/10\\/2017\",\"fecha_consumo\":\"13\\/10\\/2017\",\"validador\":\"juande@copyrap.com\"}]}"
+				}
+			]
+		},
+		{
+			"name": "validar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "data",
+							"value": "{\"method\": \"validar\", \"params\": {\"codigo\":\"161817375227\"}} ",
+							"type": "text",
+							"description": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL_DEV}}",
+					"host": [
+						"{{URL_DEV}}"
+					]
+				},
+				"description": "Comprueba si el código del bono que se le pasa por en el parámetro código es válido para consumir o nó. Devolverá ID del bono para consumir mediante la función consumir.\n<BR/><BR/>Los posibles códigos a validar aparecerán en la lista de Bonos comprados solo para Proveedores Administradores (función listBonosComprados)"
+			},
+			"response": [
+				{
+					"id": "8100a6d9-4c2d-40db-bfa1-6628dccd4f1f",
+					"name": "validar - OK (Bono válido para consumir)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"method\": \"validar\", \"params\": {\"codigo\":\"161817375227\"}} ",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_DEV}}",
+							"host": [
+								"{{URL_DEV}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+							"name": "Cache-Control",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip",
+							"name": "Content-Encoding",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"key": "Content-Length",
+							"value": "46",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Mar 2018 15:16:49 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT",
+							"name": "Expires",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100",
+							"name": "Keep-Alive",
+							"description": "Custom header"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache",
+							"name": "Pragma",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"key": "Server",
+							"value": "Apache",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding",
+							"name": "Vary",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PleskLin",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (Hora estándar romance)",
+							"httpOnly": false,
+							"domain": "desarrollo.visualfree.es",
+							"path": "/",
+							"secure": false,
+							"value": "7ikjqtduup24jc858uiq72rcc1",
+							"key": "ddrs2l3teVisual14Free2nt"
+						}
+					],
+					"body": "{\"result\":\"ok\",\"id\":\"13915\"}"
+				},
+				{
+					"id": "af03bf3a-9f5c-41d1-98cb-62069f227907",
+					"name": "validar - OK (Bono ya consumido)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"method\": \"validar\", \"params\": {\"codigo\":\"665182873058\"}} ",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_DEV}}",
+							"host": [
+								"{{URL_DEV}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+							"name": "Cache-Control",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip",
+							"name": "Content-Encoding",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"key": "Content-Length",
+							"value": "57",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Mar 2018 15:15:06 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT",
+							"name": "Expires",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100",
+							"name": "Keep-Alive",
+							"description": "Custom header"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache",
+							"name": "Pragma",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"key": "Server",
+							"value": "Apache",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding",
+							"name": "Vary",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PleskLin",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (Hora estándar romance)",
+							"httpOnly": false,
+							"domain": "desarrollo.visualfree.es",
+							"path": "/",
+							"secure": false,
+							"value": "7ikjqtduup24jc858uiq72rcc1",
+							"key": "ddrs2l3teVisual14Free2nt"
+						}
+					],
+					"body": "{\"result\":\"ko\",\"msg\":\"Bono consumido.\"}"
+				},
+				{
+					"id": "aca6203b-a2c3-48ee-aac8-f05761df17a2",
+					"name": "validar - KO (Código de bono no encontrado)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"method\": \"validar\", \"params\": {\"codigo\":\"123456789123\"}} ",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_DEV}}",
+							"host": [
+								"{{URL_DEV}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+							"name": "Cache-Control",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip",
+							"name": "Content-Encoding",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"key": "Content-Length",
+							"value": "60",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Mar 2018 14:54:40 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT",
+							"name": "Expires",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100",
+							"name": "Keep-Alive",
+							"description": "Custom header"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache",
+							"name": "Pragma",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"key": "Server",
+							"value": "Apache",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding",
+							"name": "Vary",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PleskLin",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (Hora estándar romance)",
+							"httpOnly": false,
+							"domain": "intranet.visualfree.es",
+							"path": "/",
+							"secure": false,
+							"value": "r99mej47lm05mu6j91mcijgin7",
+							"key": "ddrs2l3teVisual14Free2ntIntranet"
+						}
+					],
+					"body": "{\"result\":\"ko\",\"msg\":\"Bono no encontrado.\"}"
+				}
+			]
+		},
+		{
+			"name": "consumir",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "data",
+							"value": "{\"method\": \"consumir\", \"params\":{\"id\":\"13915\"}} ",
+							"type": "text",
+							"description": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL_DEV}}",
+					"host": [
+						"{{URL_DEV}}"
+					]
+				},
+				"description": "Consume un bono a través de su ID (Devuelto en por la función validar)"
+			},
+			"response": [
+				{
+					"id": "0f86db70-e521-4be5-b234-7699508fc848",
+					"name": "consumir - KO (Bono no existe o ya esta consumido)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"method\": \"consumir\", \"params\":{\"id\":\"1234\"}} ",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_DEV}}",
+							"host": [
+								"{{URL_DEV}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+							"name": "Cache-Control",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip",
+							"name": "Content-Encoding",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"key": "Content-Length",
+							"value": "123",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Mar 2018 15:15:41 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT",
+							"name": "Expires",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100",
+							"name": "Keep-Alive",
+							"description": "Custom header"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache",
+							"name": "Pragma",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"key": "Server",
+							"value": "Apache",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding",
+							"name": "Vary",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PleskLin",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (Hora estándar romance)",
+							"httpOnly": false,
+							"domain": "desarrollo.visualfree.es",
+							"path": "/",
+							"secure": false,
+							"value": "7ikjqtduup24jc858uiq72rcc1",
+							"key": "ddrs2l3teVisual14Free2nt"
+						}
+					],
+					"body": "{\"result\":\"ko\",\"msg\":\"Error: No es posible consumir este Bono. Posibles causas: No existe, Bono caducado, Bono anulado o Bono ya consumido.\"}"
+				},
+				{
+					"id": "19322ea4-f83e-45be-af2a-bb2837eb26f2",
+					"name": "consumir - OK (Bono consumido correctamente)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"method\": \"consumir\", \"params\":{\"id\":\"13915\"}} ",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_DEV}}",
+							"host": [
+								"{{URL_DEV}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+							"name": "Cache-Control",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip",
+							"name": "Content-Encoding",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"key": "Content-Length",
+							"value": "35",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Mar 2018 15:18:06 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT",
+							"name": "Expires",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100",
+							"name": "Keep-Alive",
+							"description": "Custom header"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache",
+							"name": "Pragma",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"key": "Server",
+							"value": "Apache",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding",
+							"name": "Vary",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PleskLin",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (Hora estándar romance)",
+							"httpOnly": false,
+							"domain": "desarrollo.visualfree.es",
+							"path": "/",
+							"secure": false,
+							"value": "7ikjqtduup24jc858uiq72rcc1",
+							"key": "ddrs2l3teVisual14Free2nt"
+						}
+					],
+					"body": "{\"result\":\"ok\"}"
+				}
+			]
+		},
+		{
+			"name": "close",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "data",
+							"value": "{\"method\":\"close\"}",
+							"type": "text",
+							"description": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL_DEV}}",
+					"host": [
+						"{{URL_DEV}}"
+					]
+				},
+				"description": "Cierra la sesion de usuario en el servidor"
+			},
+			"response": [
+				{
+					"id": "9a91c499-14ae-4925-8ddb-82f97eba4ce9",
+					"name": "close - OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\"method\":\"close\"}",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_DEV}}",
+							"host": [
+								"{{URL_DEV}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+							"name": "Cache-Control",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip",
+							"name": "Content-Encoding",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"key": "Content-Length",
+							"value": "35",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Mar 2018 14:44:01 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT",
+							"name": "Expires",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100",
+							"name": "Keep-Alive",
+							"description": "Custom header"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache",
+							"name": "Pragma",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"key": "Server",
+							"value": "Apache",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding",
+							"name": "Vary",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PleskLin",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (Hora estándar romance)",
+							"httpOnly": false,
+							"domain": "intranet.visualfree.es",
+							"path": "/",
+							"secure": false,
+							"value": "r99mej47lm05mu6j91mcijgin7",
+							"key": "ddrs2l3teVisual14Free2ntIntranet"
+						}
+					],
+					"body": "{\"result\":\"ok\"}"
+				}
+			]
+		}
+	]
+}

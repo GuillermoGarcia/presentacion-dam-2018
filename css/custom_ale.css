@@ -1,0 +1,88 @@
+/*
+ * CSS Custom Ale
+ */
+
+ /* Colores
+  *
+  * Azul Solbyte: #25a1d2;
+  * Azul más oscuro: #0F3F52;
+  */
+.cont-section h4 {
+	font-size: 28px;
+}
+
+.row h5 {
+	color: #25a1d2 !important;
+	font-size: 18px;
+}
+
+.skynet {
+	width: 75%;
+}
+
+.wordpress {
+	width: 60%;
+}
+
+/* Listas */
+.cont-lista {
+	width: 40%;
+	display: inline-block !important;
+}
+
+.obj-lista {
+	color: #0F3F52 !important;
+	font-size: 16px !important;
+}
+
+/* Logos Tecnología*/
+.cont-icon-tec {
+
+}
+
+.logo_tec {
+	height: 60px;
+	border: 0px !important;
+	background: none !important;
+	box-shadow: none !important;
+}
+
+/* Contenedor de Imágenes */
+.cont-row-ima {
+
+}
+
+.cont-ima-plugin {
+	width: 23%;
+	display: inline-block !important;
+}
+
+.cont-ima-plugin h6 {
+	color: #0F3F52 !important;
+	font-size: 12px !important;
+	margin: 0px !important;
+}
+
+.ima-plugin {
+	width: 180px;
+}
+
+/* Contenedor Otros */
+.cont-otros {
+
+}
+
+.cont-ima-otros {
+	width: 48%;
+	display: inline-block !important;
+}
+
+.cont-ima-otros h6 {
+	color: #0F3F52 !important;
+	font-size: 12px !important;
+	margin: 0px !important;
+}
+
+.ima-otros {
+	width: 380px;
+}

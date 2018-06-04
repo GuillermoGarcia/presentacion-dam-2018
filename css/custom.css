@@ -1,0 +1,123 @@
+/*
+ * CSS Custom
+ */
+
+ /* Colores
+  *
+  * Azul Solbyte: #25a1d2;
+  * Azul más oscuro: #0F3F52;
+  */
+
+ /* --- Header --- */
+#header{
+	position: absolute;
+  width: 100%;
+	z-index: 2;
+}
+
+.cont-logo{
+  display: block;
+	margin: 15px;
+}
+
+
+img.right{
+  position: absolute;
+  right: 15px;
+  width: 180px;
+}
+
+/* --- Section Portada --- */
+section .cont-main-logo {
+  background-color: rgba(255,255,255,0.7);
+}
+
+.main-logo {
+  width: 60%;
+  margin: 0px !important;
+  background-color: 0px !important;
+  border: 0px !important;
+  box-shadow: none !important;
+}
+
+/* --- Section Solbyte --- */
+
+.cont-section h4 {
+	color: #25a1d2;
+}
+
+.cont-about {
+	margin: 0px auto !important;
+	width: 85%;
+	background-color: rgba(255,255,255,0.7);
+}
+
+.cont-about p {
+	font-size: 26px;
+	padding: 5px 25px;
+	color: #0F3F52;
+}
+
+.cont-about .row {
+	border: 1px solid #25a1d2 !important;
+	border-collapse: collapse;
+}
+
+.cont-icon, .cont-text {
+	display: inline-block;
+}
+
+.cont-icon {
+	width:15%;
+	vertical-align: top !important;
+	margin-top: 25px !important;
+}
+
+.cont-text {
+	width:80%;
+}
+
+.cont-photo {
+	width: 520px;
+	margin: 0px auto !important;
+}
+
+.cont-tutores {
+  display: block;
+  position: relative;
+}
+
+.cont-tutores div img{
+  border: 0 !important;
+  margin: 10px 0 !important;
+  max-height: 380px;
+}
+
+.cont-tutores p{
+  line-height: 0;
+  margin:5px 0 !important;
+  padding: 2px 0 !important;
+}
+
+.cont-tutores:after, .cont-tutores::before{
+  content: '';
+  display: table;
+}
+
+.cont-tutores:after{
+  clear: both;
+}
+
+.cont-tutores .juanmi{
+  float: left;
+  margin-left: 50px !important;
+}
+
+.cont-tutores .miguel{
+  float: right;
+  margin-right: 50px !important;
+}
+
+.cont-tutores .miguel p{
+  margin-top: 16px !important;
+}

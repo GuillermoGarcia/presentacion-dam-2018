@@ -128,6 +128,7 @@ div.docs, div.valor {
 
 div.docs div {
   min-height: 350px;
+  max-height: 500px;
 }
 
 div.valor{
@@ -200,28 +201,6 @@ div.plantilla img:not(:first-child){
   top: 0;  
 }
 
-@media only screen and (max-width: 1280px){
-  .bmenu li {
-    font-size: 55px !important;
-  }
-
-  div.apps{
-    grid-gap: 0.3333%;
-    margin: 0 1.5%;
-  }
-}
-
-@media only screen and (max-width: 1024px){
-  .bmenu li {
-    font-size: 35px !important;
-  }
-
-  div.apps{
-    grid-gap: 0.3333%;
-    margin: 0 1.5%;
-  }
-}
-
 @media only screen and (min-height: 600px){
 
   div.wrapper{
@@ -262,6 +241,10 @@ div.plantilla img:not(:first-child){
     max-height: 600px;
   }
 
+  div.fragmentos{
+    height: 630px;
+    max-height: 630px;
+  }
 }
 
 @media only screen and (min-height: 1024px){
@@ -280,6 +263,56 @@ div.plantilla img:not(:first-child){
     left: 8%;
   }
 
+}
+
+@media only screen and (min-height: 1080px){
+
+  div.wrapper{
+    height: 810px;
+    min-height: 810px;
+    max-height: 810px
+  }
+
+  div.fragmentos, div.gridvs{
+    height: 750px;
+  }
+
+  div.splash img{
+    max-height: 700px;
+  }
+
+  div.plantilla img:not(:first-child){
+    left: 8%;
+  }
+
+}
+
+@media only screen and (max-width: 1920px){
+  div.plantilla img:not(:first-child){
+    left: 22% !important;
+  }
+}
+
+@media only screen and (max-width: 1280px){
+  .bmenu li {
+    font-size: 55px !important;
+  }
+
+  div.apps{
+    grid-gap: 0.3333%;
+    margin: 0 1.5%;
+  }
+}
+
+@media only screen and (max-width: 1024px){
+  .bmenu li {
+    font-size: 35px !important;
+  }
+
+  div.apps{
+    grid-gap: 0.3333%;
+    margin: 0 1.5%;
+  }
 }
 
 @media only screen and (max-width: 800px){

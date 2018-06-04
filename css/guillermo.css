@@ -241,9 +241,9 @@ div.plantilla img:not(:first-child){
     max-height: 600px;
   }
 
-  div.fragmentos{
-    height: 630px;
-    max-height: 630px;
+  div.fragmentos, div.gridvs, div.gridvs4{
+    height: 590px;
+    max-height: 590px;
   }
 }
 
